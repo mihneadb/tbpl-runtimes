@@ -1,5 +1,7 @@
 var BAR_WIDTH = 50;
 var MIN_HEIGHT = 5;
+var TEXT_SIZE = 15;
+var TEXT_PAD = 5;
 
 var data = null;
 var plotted = false;
@@ -55,7 +57,7 @@ function plotGraph(data) {
     var yMax = d3.max(graphData, getterFunc);
     var computeHeight = d3.scale.linear()
     .domain([0, yMax])
-    .range([MIN_HEIGHT, chartHeight]);
+    .range([MIN_HEIGHT, chartHeight - TEXT_SIZE - TEXT_PAD]);
 
     chart.attr("width", graphData.length * BAR_WIDTH)
         .attr("height", chartHeight);
@@ -63,7 +65,7 @@ function plotGraph(data) {
         .data(graphData)
         .enter().append("rect")
         .attr("x", function(d, i) { return i * BAR_WIDTH; })
-        .attr("y", function(d, i) { return chartHeight - computeHeight(getterFunc(d)); })
+        .attr("y", function(d, i) { return chartHeight - computeHeight(getterFunc(d)) - TEXT_SIZE - TEXT_PAD; })
         .attr("height", function(d, i) { return computeHeight(getterFunc(d)); })
         .attr("width", BAR_WIDTH)
         .on('mouseover', function(d) {
@@ -82,16 +84,17 @@ function plotGraph(data) {
             return d.name;
         })
         .attr("x", function(d, i) { return i * BAR_WIDTH + (BAR_WIDTH / 2); })
-        .attr("y", chartHeight - 10)
+        .attr("y", chartHeight - TEXT_PAD)
         .attr("text-anchor", "middle")
-        .attr("fill", "white");
+        .attr("fill", "black")
+        .attr("font-size", TEXT_SIZE);
 
     chart.selectAll("text.duration")
         .data(graphData)
         .enter().append("text")
         .text(getterFunc)
         .attr("x", function(d, i) { return i * BAR_WIDTH + (BAR_WIDTH / 2); })
-        .attr("y", function(d, i) { return chartHeight - computeHeight(getterFunc(d)) + 20; })
+        .attr("y", function(d, i) { return chartHeight - computeHeight(getterFunc(d)); })
         .attr("text-anchor", "middle")
         .attr("fill", "white");
 
