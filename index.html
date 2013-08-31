@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TBPL job times</title>
+
+        <link rel="icon" type="image/ico" href="/img/favicon.ico?vnew"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="Mozilla TBPL job times - plots, forecasts." />
+        <meta name="keywords" content="mozilla tbpl time job testslave"/>
+        <meta name="robots" content="index,follow" />
+
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/foundation.min.css" />
+        <link rel="stylesheet" href="css/site.css" />
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+
+
+<div class="content">
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="row" id="controls">
+                <div class="small-4 columns">
+                    <select id="platform">
+                    </select>
+                </div>
+                <div class="small-4 columns">
+                    <label>Sort<input type="checkbox" id="sort"></label>
+                </div>
+                <div class="small-4 columns">
+                    <label><a href="sampledata.json">sampledata.json</a> file<input type="file" id="file"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="" id="chart-div">
+                    <svg id="chart"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/zepto.min.js"></script>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/d3.tip.min.js"></script>
+<script src="js/plot.js"></script>
+</body>
+</html>
