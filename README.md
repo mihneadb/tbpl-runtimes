@@ -1,6 +1,8 @@
-xpcshelltest-resource-usage
+TBPL runtimes viewer
 ===========================
 
-Plots of the resource usage during XPCShell test runs.
+Plots of the build and test times for a given revision.
 
-http://www.mihneadb.net/xpcshelltest-resource-usage/
+Data can be generated with https://github.com/mihneadb/tbpl-runtimes-scraper and
+then viewed at http://www.mihneadb.net/tbpl-runtimes.
+
