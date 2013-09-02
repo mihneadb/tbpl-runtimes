@@ -82,7 +82,7 @@ function addRect(evt, value) {
     timebar.append(makeRect(rects.length, lastX, 0, w));
     rects.push({value: value});
     lastX += w;
-    verifyCanAdd(value);
+    verifyCanAdd($("#chunkSize-range").attr("valueAsNumber"));
 }
 
 var canAdd = true;
