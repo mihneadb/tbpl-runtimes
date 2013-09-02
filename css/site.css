@@ -1,14 +1,15 @@
 #chart rect {
-   fill: lightseagreen;
-   stroke: white;
+  fill: lightseagreen;
+  stroke: white;
 }
 
 #chart rect:hover {
-   fill: steelblue;
+  fill: steelblue;
 }
 
 #chart-div {
-   overflow: auto;
+  overflow: auto;
+  text-align: center;
 }
 
 #controls {
@@ -16,7 +17,7 @@
 }
 
 .content {
-   padding-top: 20px;
+  padding-top: 20px;
 }
 
 .d3-tip {
@@ -34,8 +35,8 @@
 }
 
 #timebar rect {
-   fill: steelblue;
-   stroke: white;
+  fill: steelblue;
+  stroke: white;
 }
 
 #timebar rect:hover {
