@@ -125,7 +125,6 @@ var replot = function() {
         plotGraph(data);
     }
 };
-window.onresize = replot;
 
 $('#file').on('change', handleFile);
 $('#platform').on('change', replot);

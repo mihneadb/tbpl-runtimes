@@ -132,6 +132,23 @@ function setTimeScale() {
     verifyCanAdd($("#chunkSize-range").attr("valueAsNumber"));
 }
 
+function resizeHandler() {
+    replot();
+    $("#timebar").remove();
+    $("#timebar-div").append('<svg id="timebar"></svg>');
+    timebar = $("#timebar");
+    timebarWidth = $("#timebar-div").width() - 20;
+    timebarHeight = DEFAULT_RECT_HEIGHT;
+    timebar = $("#timebar");
+    timebar.attr("width", timebarWidth)
+           .attr("height", timebarHeight);
+
+    computeRectWidth = d3.scale.linear()
+        .domain([1, TIME_SCALE])
+        .rangeRound([MIN_RECT_WIDTH, timebarWidth]);
+    redraw();
+}
+
 
 $("#add-rect").on("click", addRect);
 $("#set-timeScale").on("click", setTimeScale);
@@ -144,3 +161,4 @@ $("#timeScale-number").on('keyup', genericNumberInputHandler("timeScale"));
 $("#timeScale-number").on('change', genericNumberInputHandler("timeScale"));
 $("#timeScale-range").on('input', genericRangeInputHandler("timeScale"));
 
+window.onresize = resizeHandler;
