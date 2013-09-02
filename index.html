@@ -38,7 +38,7 @@
                     <label>Sort<input type="checkbox" id="sort"></label>
                 </div>
                 <div class="small-4 columns">
-                    <label><a href="sampledata.json">sampledata.json</a> file<input type="file" id="file"></label>
+                    <label><a href="sampledata.json">shuampledata.json</a> file<input type="file" id="file"></label>
                 </div>
             </div>
             <div class="row">
@@ -48,12 +48,50 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="legend">
         <div class="small-6 columns">
             <p class="text-left">Y values are in minutes.</p>
         </div>
         <div class="small-6 columns">
             <p class="text-right">Data generated with <a href="https://github.com/mihneadb/tbpl-runtimes-scraper">TBPL runtimes scraper</a>.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 columns" id="timebar-div">
+            <p>Job queue:</p>
+            <svg id="timebar"></svg>
+        </div>
+        <div class="small-offset-1 small-5 columns" id="job-controls">
+            <div class="row" id="timeScale-controls">
+                <p>Time scale:</p>
+                <div class="small-8 columns">
+                    <input type="range" id="timeScale-range" min="1" value="2" defaultValue="2" max="24">
+                </div>
+                <div class="small-3 columns">
+                    <input type="number" id="timeScale-number" min="1" value="2" defaultValue="2" max="24">
+                </div>
+                <div class="small-1 columns">
+                    <p>hour(s)</p>
+                </div>
+            </div>
+            <div class="row">
+                <a class="tiny button" id="set-timeScale">Set</a>
+            </div>
+            <div class="row" id="chunkSize-controls">
+                <p>Job length:</p>
+                <div class="small-8 columns">
+                    <input type="range" id="chunkSize-range" min="1" value="1" defaultValue="1" max="120">
+                </div>
+                <div class="small-3 columns">
+                    <input type="number" id="chunkSize-number" min="1" value="1" defaultValue="1" max="120">
+                </div>
+                <div class="small-1 columns">
+                    <p>min(s)</p>
+                </div>
+            </div>
+            <div class="row">
+                <a class="tiny button" id="add-rect">Add</a>
+            </div>
         </div>
     </div>
 </div>
@@ -62,5 +100,6 @@
 <script src="js/d3.v3.min.js"></script>
 <script src="js/d3.tip.min.js"></script>
 <script src="js/plot.js"></script>
+<script src="js/forecast.js"></script>
 </body>
 </html>
