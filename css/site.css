@@ -28,3 +28,33 @@
   width: 300px;
 }
 
+.d3-tip.time {
+  width: 50px;
+  text-align: center;
+}
+
+#timebar rect {
+   fill: steelblue;
+   stroke: white;
+}
+
+#timebar rect:hover {
+  fill: blue;
+}
+
+#timebar {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+#chunkSize-controls input, #timeScale-controls input {
+  width: 100%;
+}
+
+#chunkSize-number, #timeScale-number {
+  min-width: 60px;
+}
+
+#job-controls {
+  padding: 0 30px;
+}

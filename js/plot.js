@@ -6,6 +6,11 @@ var TEXT_PAD = 5;
 var data = null;
 var plotted = false;
 
+function getAllowedHeight() {
+    return ($(window).height() - $("#controls").height() -
+                       $("#legend").height()) / 2;
+}
+
 function getPlatformData(platform) {
     for (var i = 0; i < data.length; i++) {
         if (data[i].platform == platform) {
@@ -26,8 +31,7 @@ function plotGraph(data) {
     $("#chart-div").append('<svg id="chart"></svg>');
     var chart = d3.select("#chart");
     var chartWidth = $("#chart-div").width();
-    var chartHeight = $(window).height() - $("#chart").position().top - 50;
-
+    var chartHeight = getAllowedHeight();
     var platform = $("#platform")[0].value;
     var sort = $("#sort")[0].checked;
 
@@ -68,12 +72,15 @@ function plotGraph(data) {
         .attr("y", function(d, i) { return chartHeight - computeHeight(getterFunc(d)) - TEXT_SIZE - TEXT_PAD; })
         .attr("height", function(d, i) { return computeHeight(getterFunc(d)); })
         .attr("width", BAR_WIDTH)
+        .on('click', function(d) {
+            addRect(null, d.duration);
+        })
         .on('mouseover', function(d) {
             tip.show(d);
-            $('.d3-tip').css('top', $("#chart").position().top + 'px');
+            $('.d3-tip:not(.time)').css('top', $("#chart").position().top + 'px');
             // center it horizontally
             var tipWidth = $('.d3-tip').width();
-            $('.d3-tip').css('left', $(window).width() / 2 - tipWidth / 2 + 'px');
+            $('.d3-tip:not(.time)').css('left', $(window).width() / 2 - tipWidth / 2 + 'px');
         })
         .on('mouseout', tip.hide);
 
@@ -125,6 +132,7 @@ $('#platform').on('change', replot);
 $('#sort').on('change', replot);
 
 
+var timebarY;
 // plot a default graph
 d3.json("sampledata.json", function(d) {
     data = d;
@@ -133,4 +141,5 @@ d3.json("sampledata.json", function(d) {
                       .text(value.platform));
     });
     plotGraph(data);
+    timebarY = $("#timebar").offset().top;
 });
